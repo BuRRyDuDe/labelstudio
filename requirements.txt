@@ -12,7 +12,7 @@ gevent==23.7.0
 django-cors-headers==3.6.0
 django-extensions==3.2.3
 celery==5.3.1
-redis==4.6.0
+redis>=3.5,<4.0
 
 # Monitoring and health checks
 django-health-check==3.17.0
