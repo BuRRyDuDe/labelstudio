@@ -8,6 +8,7 @@ RUN apt-get update && apt-get install -y \
     gcc \
     python3-dev \
     curl \
+    sudo \
     && rm -rf /var/lib/apt/lists/*
 
 # Set environment variables
@@ -36,7 +37,8 @@ RUN chmod +x /label-studio/start.sh
 
 # Create label-studio user and set permissions
 RUN useradd -m -s /bin/bash labelstudio && \
-    chown -R labelstudio:labelstudio /label-studio
+    chown -R labelstudio:labelstudio /label-studio && \
+    echo "labelstudio ALL=(ALL) NOPASSWD: /bin/mkdir, /bin/chown, /bin/chmod" >> /etc/sudoers
 
 # Switch to non-root user
 USER labelstudio

@@ -1,5 +1,13 @@
 #!/bin/bash
 
+# Fix permissions for mounted volume
+echo "Setting up data directory permissions..."
+sudo mkdir -p /label-studio/data/media
+sudo mkdir -p /label-studio/data/static
+sudo chown -R labelstudio:labelstudio /label-studio/data
+sudo chmod -R 755 /label-studio/data
+echo "Data directory permissions set successfully"
+
 # Wait for database to be ready (only if PostgreSQL is configured)
 if [ -n "$PGHOST" ]; then
   echo "Waiting for PostgreSQL to be ready..."
