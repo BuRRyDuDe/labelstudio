@@ -1,0 +1,27 @@
+# Database drivers
+psycopg2-binary==2.9.7
+
+# Performance optimizations
+gunicorn==21.2.0
+gevent==23.7.0
+
+# Additional utilities
+django-cors-headers==4.3.1
+django-extensions==3.2.3
+celery==5.3.1
+redis==4.6.0
+
+# Monitoring and health checks
+django-health-check==3.17.0
+
+# Security
+django-ratelimit==4.1.0
+
+# File handling optimizations
+Pillow==10.0.0
+numpy==1.24.3
+pandas==2.0.3
+
+# API optimizations
+djangorestframework==3.14.0
+drf-spectacular==0.26.4
