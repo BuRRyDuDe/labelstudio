@@ -9,7 +9,7 @@ gunicorn==21.2.0
 gevent==23.7.0
 
 # Additional utilities
-django-cors-headers==4.3.1
+django-cors-headers==3.6.0
 django-extensions==3.2.3
 celery==5.3.1
 redis==4.6.0
