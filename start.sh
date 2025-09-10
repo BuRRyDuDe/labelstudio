@@ -1,12 +1,13 @@
 #!/bin/bash
 
-# Fix permissions for mounted volume
-echo "Setting up data directory permissions..."
-sudo mkdir -p /label-studio/data/media
-sudo mkdir -p /label-studio/data/static
-sudo chown -R labelstudio:labelstudio /label-studio/data
-sudo chmod -R 755 /label-studio/data
-echo "Data directory permissions set successfully"
+# Ensure data directories exist and have correct permissions
+echo "Verifying data directory setup..."
+if [ ! -d "/label-studio/data/media" ]; then
+    sudo mkdir -p /label-studio/data/media
+    sudo chown -R labelstudio:labelstudio /label-studio/data
+    sudo chmod -R 755 /label-studio/data
+fi
+echo "Data directory setup verified"
 
 # Wait for database to be ready (only if PostgreSQL is configured)
 if [ -n "$PGHOST" ]; then
@@ -46,4 +47,7 @@ else:
 
 # Start Label Studio
 echo "Starting Label Studio..."
+# Use PORT environment variable provided by Railway, default to 8080 if not set
+PORT=${PORT:-8080}
+echo "Starting on port: $PORT"
 exec label-studio start --host 0.0.0.0 --port $PORT --data-dir /label-studio/data

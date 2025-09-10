@@ -16,11 +16,6 @@ ENV LABEL_STUDIO_HOST=0.0.0.0
 ENV DJANGO_DB=default
 ENV DJANGO_SETTINGS_MODULE=label_studio_config
 
-# Create directories for persistent storage
-RUN mkdir -p /label-studio/data
-RUN mkdir -p /label-studio/media
-RUN mkdir -p /label-studio/static
-
 # Set working directory
 WORKDIR /label-studio
 
@@ -35,9 +30,15 @@ RUN pip install --no-cache-dir -r requirements.txt
 # Make startup script executable
 RUN chmod +x /label-studio/start.sh
 
-# Create label-studio user and set permissions
-RUN useradd -m -s /bin/bash labelstudio && \
+# Create label-studio user
+RUN useradd -m -s /bin/bash labelstudio
+
+# Create directories for persistent storage with proper permissions
+RUN mkdir -p /label-studio/data/media && \
+    mkdir -p /label-studio/data/static && \
+    mkdir -p /label-studio/data/export && \
     chown -R labelstudio:labelstudio /label-studio && \
+    chmod -R 755 /label-studio/data && \
     echo "labelstudio ALL=(ALL) NOPASSWD: /bin/mkdir, /bin/chown, /bin/chmod" >> /etc/sudoers
 
 # Switch to non-root user
