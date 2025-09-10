@@ -20,7 +20,7 @@ django-ratelimit==4.1.0
 # File handling optimizations
 Pillow==10.0.0
 numpy>=1.25.0,<2.0
-pandas==2.0.3
+pandas>=2.1.0,<3.0
 
 # API optimizations
 djangorestframework==3.14.0
