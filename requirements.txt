@@ -3,6 +3,8 @@ label-studio>=1.9.0
 
 # Database drivers
 psycopg2-binary>=2.9.5,<3.0
+django-environ==0.10.0
+dj-database-url==2.1.0
 
 # Performance optimizations
 gunicorn==21.2.0
