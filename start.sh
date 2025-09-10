@@ -1,12 +1,16 @@
 #!/bin/bash
 
-# Wait for database to be ready
-echo "Waiting for PostgreSQL to be ready..."
-while ! pg_isready -h $PGHOST -p $PGPORT -U $PGUSER; do
-  echo "PostgreSQL is unavailable - sleeping"
-  sleep 2
-done
-echo "PostgreSQL is up - executing command"
+# Wait for database to be ready (only if PostgreSQL is configured)
+if [ -n "$PGHOST" ]; then
+  echo "Waiting for PostgreSQL to be ready..."
+  while ! pg_isready -h $PGHOST -p $PGPORT -U $PGUSER; do
+    echo "PostgreSQL is unavailable - sleeping"
+    sleep 2
+  done
+  echo "PostgreSQL is up - executing command"
+else
+  echo "Using SQLite database - no connection check needed"
+fi
 
 # Run database migrations
 echo "Running database migrations..."
