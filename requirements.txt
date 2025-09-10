@@ -10,7 +10,7 @@ gevent==23.7.0
 
 # Additional utilities
 django-cors-headers==3.6.0
-django-extensions==3.2.3
+django-extensions==3.1.0
 celery==5.3.1
 redis>=3.5,<4.0
 
@@ -22,7 +22,7 @@ django-ratelimit==4.1.0
 
 # File handling optimizations
 Pillow==10.0.0
-numpy==1.24.3
+numpy>=1.26.4,<2.0
 pandas>=2.1.0,<3.0
 
 # API optimizations
