@@ -4,6 +4,9 @@ FROM heartexlabs/label-studio:latest
 USER root
 RUN apt-get update && apt-get install -y \
     postgresql-client \
+    libpq-dev \
+    gcc \
+    python3-dev \
     curl \
     && rm -rf /var/lib/apt/lists/*
 

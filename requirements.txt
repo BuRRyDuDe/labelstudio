@@ -1,5 +1,5 @@
 # Database drivers
-psycopg2-binary==2.9.7
+psycopg2-binary>=2.9.5,<3.0
 
 # Performance optimizations
 gunicorn==21.2.0
